@@ -1,3 +1,21 @@
+-- =============================================================================
+--  File        : ALU.vhd
+--  Entity      : ALU
+--  Project     : 8-bit CPU  (Digital Technology, SS 2026)
+--  Description : Combinational Arithmetic Logic Unit.
+--                It performs arithmetic and logic operations selected by opcode.
+--                The ALU does not store data; it only calculates the next result.
+--
+--  Inputs      : Input_A usually comes from the accumulator.
+--                Input_B comes from either the operand/immediate value or RAM.
+--                Opcode selects the ALU operation.
+--
+--  Outputs     : Result is the calculated 8-bit value.
+--                Carry_Flag shows carry-out for addition or borrow/wrap for subtraction.
+--                Zero_Flag is set when Result = 00.
+--                Overflow_Flag is set for signed overflow in add/subtract.
+-- =============================================================================
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -15,77 +33,103 @@ entity ALU is
         Zero_Flag     : out std_logic;
         Overflow_Flag : out std_logic
     );
-end entity;
+end entity ALU;
 
-architecture RTL of ALU is
+architecture behavioral of ALU is
+
 begin
 
-    process(Input_A, Input_B, Opcode)
-        variable Temp     : unsigned(8 downto 0);
-        variable R        : std_logic_vector(7 downto 0);
-        variable Carry    : std_logic;
-        variable Overflow : std_logic;
+    -- -------------------------------------------------------------------------
+    -- Combinational ALU process
+    --
+    -- The ALU output depends only on Input_A, Input_B, and Opcode.
+    -- Therefore, all three signals are included in the sensitivity list.
+    -- Variables are used inside the process to calculate temporary values
+    -- before assigning the final outputs.
+    -- -------------------------------------------------------------------------
+    alu_logic : process(Input_A, Input_B, Opcode)
+
+        -- 9-bit temporary value is used for addition/subtraction.
+        -- Bit 8 stores the carry-out or borrow/wrap information.
+        variable temp_result : unsigned(8 downto 0);
+
+        -- Internal variables for the final output values.
+        variable result_var   : std_logic_vector(7 downto 0);
+        variable carry_var    : std_logic;
+        variable overflow_var : std_logic;
+
     begin
-        R        := Input_A;
-        Carry    := '0';
-        Overflow := '0';
+
+        -- Default values.
+        -- These avoid incomplete assignments and prevent unintended latches.
+        result_var   := Input_A;
+        carry_var    := '0';
+        overflow_var := '0';
+        temp_result  := (others => '0');
 
         case Opcode is
 
             when OP_LOAD_IMMEDIATE =>
-                R := Input_B;
+                result_var := Input_B;
 
             when OP_LOAD_MEMORY =>
-                R := Input_B;
+                result_var := Input_B;
 
             when OP_ADD_MEMORY =>
-                Temp  := ('0' & unsigned(Input_A)) + ('0' & unsigned(Input_B));
-                R     := std_logic_vector(Temp(7 downto 0));
-                Carry := Temp(8);
+                temp_result := ('0' & unsigned(Input_A)) + ('0' & unsigned(Input_B));
+                result_var  := std_logic_vector(temp_result(7 downto 0));
+                carry_var   := temp_result(8);
 
-                if (Input_A(7) = Input_B(7)) and (R(7) /= Input_A(7)) then
-                    Overflow := '1';
+                -- Signed overflow check:
+                -- If both inputs have the same sign but the result sign changes,
+                -- signed overflow occurred.
+                if (Input_A(7) = Input_B(7)) and (result_var(7) /= Input_A(7)) then
+                    overflow_var := '1';
                 end if;
 
             when OP_SUB_MEMORY =>
-                Temp  := ('0' & unsigned(Input_A)) - ('0' & unsigned(Input_B));
-                R     := std_logic_vector(Temp(7 downto 0));
-                Carry := Temp(8);
+                temp_result := ('0' & unsigned(Input_A)) - ('0' & unsigned(Input_B));
+                result_var  := std_logic_vector(temp_result(7 downto 0));
+                carry_var   := temp_result(8);
 
-                if (Input_A(7) /= Input_B(7)) and (R(7) /= Input_A(7)) then
-                    Overflow := '1';
+                -- Signed overflow check for subtraction:
+                -- If the inputs have different signs and the result sign changes
+                -- compared to Input_A, signed overflow occurred.
+                if (Input_A(7) /= Input_B(7)) and (result_var(7) /= Input_A(7)) then
+                    overflow_var := '1';
                 end if;
 
             when OP_AND_MEMORY =>
-                R := Input_A and Input_B;
+                result_var := Input_A and Input_B;
 
             when OP_OR_MEMORY =>
-                R := Input_A or Input_B;
+                result_var := Input_A or Input_B;
 
             when OP_XOR_MEMORY =>
-                R := Input_A xor Input_B;
+                result_var := Input_A xor Input_B;
 
             when OP_NOT_ACC =>
-                R := not Input_A;
+                result_var := not Input_A;
 
             when OP_CLEAR =>
-                R := (others => '0');
+                result_var := (others => '0');
 
             when others =>
-                R := Input_A;
+                result_var := Input_A;
 
         end case;
 
-        Result        <= R;
-        Carry_Flag    <= Carry;
-        Overflow_Flag <= Overflow;
+        -- Assign calculated values to ALU outputs.
+        Result        <= result_var;
+        Carry_Flag    <= carry_var;
+        Overflow_Flag <= overflow_var;
 
-        if R = "00000000" then
+        if result_var = "00000000" then
             Zero_Flag <= '1';
         else
             Zero_Flag <= '0';
         end if;
 
-    end process;
+    end process alu_logic;
 
-end architecture;
+end architecture behavioral;
