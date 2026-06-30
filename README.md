@@ -58,7 +58,7 @@ Each testbench is self-checking and prints `PASS` lines to the console.
 
 - [x] CPU core RTL + testbenches (all passing)
 - [ ] FPGA board top level (`Nexys_A7_Top.vhd`)
-- [ ] Clock divider + debounced single-step button
-- [ ] Seven-segment display driver
+- [x] Clock divider + debounced single-step button
+- [x] Seven-segment display driver
 - [ ] Constraints file (`.xdc`)
 - [ ] On-board demonstration
