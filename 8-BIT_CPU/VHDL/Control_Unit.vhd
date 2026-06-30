@@ -156,7 +156,7 @@ begin
                         ACC_Load <= '1';
 
                     when OP_HALT =>
-                        Halt_Control <= '1';
+                        null;
 
                     when others =>
                         null;
