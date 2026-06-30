@@ -48,16 +48,19 @@ architecture RTL of Memory_Unit is
         others => OP_NOP        & "0000"
     );
 
-    -- Program 1: arithmetic with hex result above 9. Final output = 0D.
+    -- Program 1: 8-bit datapath demonstration. Final output = 10.
+    -- This proves the CPU is not only 4-bit, because:
+    -- 4-bit result: F + 1 = 0 with carry
+    -- 8-bit result: 0F + 01 = 10
     constant Program_1 : ROM_Array_Type := (
-        0  => OP_LOAD_IMMEDIATE & "1011", -- ACC = B hex = 11 decimal
-        1  => OP_ADD_MEMORY     & "0000", -- ACC = B + RAM[0] = D hex
-        2  => OP_OUT            & "0000", -- OUT = D
-        3  => OP_NOP            & "0000",
+        0  => OP_LOAD_IMMEDIATE & "1111", -- ACC = 0F
+        1  => OP_ADD_MEMORY     & "0001", -- ACC = ACC + RAM[1] = 0F + 01 = 10
+        2  => OP_OUT            & "0000", -- OUT = 10
+        3  => OP_HALT           & "0000", -- Stop CPU
         4  => OP_NOP            & "0000",
         5  => OP_NOP            & "0000",
         6  => OP_NOP            & "0000",
-        7  => OP_HALT           & "0000",
+        7  => OP_NOP            & "0000",
         others => OP_NOP        & "0000"
     );
 
