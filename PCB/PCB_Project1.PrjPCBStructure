@@ -1,3 +1,4 @@
-Record=TopLevelDocument|FileName=FPGA.SchDoc|SheetNumber= 
-Record=NoMainPathDocument|SourceDocument=FPGA.SchDoc|FileName=FTDI.SchDoc|SheetNumber= 
-Record=NoMainPathDocument|SourceDocument=FPGA.SchDoc|FileName=Misc.SchDoc|SheetNumber= 
+Record=TopLevelDocument|FileName=7seg.SchDoc|SheetNumber= 
+Record=NoMainPathDocument|SourceDocument=7seg.SchDoc|FileName=FPGA.SchDoc|SheetNumber= 
+Record=NoMainPathDocument|SourceDocument=7seg.SchDoc|FileName=FTDI.SchDoc|SheetNumber= 
+Record=NoMainPathDocument|SourceDocument=7seg.SchDoc|FileName=Misc.SchDoc|SheetNumber= 
