@@ -58,7 +58,7 @@ OutputEnabled2_OutputMedium2=2
 OutputEnabled2_OutputMedium3=0
 OutputEnabled2_OutputMedium4=0
 OutputDefault2=0
-PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.75|XCorrection=1.00|YCorrection=1.00|PrintKind=0|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=2.34|XCorrection=1.00|YCorrection=1.00|PrintKind=0|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
 Configuration2_Name1=OutputConfigurationParameter1
 Configuration2_Item1=DesignatorDisplayMode=Physical|PrintArea=DesignExtent|PrintAreaLowerLeftCornerX=0|PrintAreaLowerLeftCornerY=0|PrintAreaUpperRightCornerX=0|PrintAreaUpperRightCornerY=0|Record=PcbPrintView|DocumentPath=C:\Users\Zefa\Desktop\HW 2026\PCB\SS26_HWE_Lab_Team_A8\PCB\PCB1.PcbDoc
 Configuration2_Name2=OutputConfigurationParameter2
@@ -80,20 +80,18 @@ OutputDefault3=0
 PageOptions3=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4
 Configuration3_Name1=ColumnNameFormat
 Configuration3_Item1=CaptionAsName
-Configuration3_Name2=Filter
-Configuration3_Item2=545046300E5446696C74657257726170706572000D46696C7465722E416374697665090F46696C7465722E43726974657269610A04000000000000000000
-Configuration3_Name3=ForceUpdateSettings
-Configuration3_Item3=False
-Configuration3_Name4=General
-Configuration3_Item4=TemplateFilename=Board Stack Report.XLT
-Configuration3_Name5=GroupOrder
-Configuration3_Item5=Footprint=True
-Configuration3_Name6=PCBDocument
-Configuration3_Item6=FileName=FPGA.PcbDoc
-Configuration3_Name7=SortOrder
-Configuration3_Item7=Designator=Up|Comment=Up|Footprint=Up
-Configuration3_Name8=VisibleOrder
-Configuration3_Item8=Description=86|Quantity=74|Manufacturer 1=97|Manufacturer Part Number 1=118|Supplier Part Number 1=108|Supplier Unit Price 1=92|Footprint=52
+Configuration3_Name2=ForceUpdateSettings
+Configuration3_Item2=False
+Configuration3_Name3=General
+Configuration3_Item3=TemplateFilename=Board Stack Report.XLT
+Configuration3_Name4=GroupOrder
+Configuration3_Item4=Footprint=True
+Configuration3_Name5=PCBDocument
+Configuration3_Item5=FileName=FPGA.PcbDoc
+Configuration3_Name6=SortOrder
+Configuration3_Item6=Footprint=Up
+Configuration3_Name7=VisibleOrder
+Configuration3_Item7=Description=86|Quantity=74|Manufacturer 1=97|Manufacturer Part Number 1=118|Supplier Part Number 1=108|Supplier Unit Price 1=92|Footprint=52
 
 [PublishSettings]
 OutputFilePath2=C:\Users\Zefa\Desktop\HW 2026\PCB\SS26_HWE_Lab_Team_A8\PCB.PDF
@@ -104,7 +102,7 @@ OutputPathMediaValue2=
 OutputPathOutputer2=[Output Type]
 OutputPathOutputerPrefix2=
 OutputPathOutputerValue2=
-OutputFileName2=PCB_Project1.pdf
+OutputFileName2=All Schematics and Layout.pdf
 OutputFileNameMulti2=
 UseOutputNameForMulti2=1
 OutputFileNameSpecial2=

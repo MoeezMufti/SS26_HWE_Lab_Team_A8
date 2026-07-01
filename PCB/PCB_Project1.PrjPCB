@@ -67,7 +67,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=MFUTJSMA
 
 [Document2]
 DocumentPath=Schematics\Misc.SchDoc
@@ -189,70 +189,74 @@ GenerateClassCluster=0
 DocumentUniqueId=DIASFDOG
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for PCB_Project1\Design Rule Check - PCB1.html
+DocumentPath=BOM.pdf
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=Gerbers\FPGA-RoundHoles.TXT
+DocumentPath=Project Outputs for PCB_Project1\Design Rule Check - PCB1.html
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=Gerbers\FPGA-SlotHoles.TXT
+DocumentPath=Gerbers\FPGA-RoundHoles.TXT
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=Gerbers\FPGA.DRR
+DocumentPath=Gerbers\FPGA-SlotHoles.TXT
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=Gerbers\FPGA.EXTREP
+DocumentPath=Gerbers\FPGA.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument6]
-DocumentPath=Gerbers\FPGA.GBL
+DocumentPath=Gerbers\FPGA.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=Gerbers\FPGA.GBO
+DocumentPath=Gerbers\FPGA.GBL
 DItemRevisionGUID=
 
 [GeneratedDocument8]
-DocumentPath=Gerbers\FPGA.GBS
+DocumentPath=Gerbers\FPGA.GBO
 DItemRevisionGUID=
 
 [GeneratedDocument9]
-DocumentPath=Gerbers\FPGA.GKO
+DocumentPath=Gerbers\FPGA.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument10]
-DocumentPath=Gerbers\FPGA.GM1
+DocumentPath=Gerbers\FPGA.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument11]
-DocumentPath=Gerbers\FPGA.GM4
+DocumentPath=Gerbers\FPGA.GM1
 DItemRevisionGUID=
 
 [GeneratedDocument12]
-DocumentPath=Gerbers\FPGA.GTL
+DocumentPath=Gerbers\FPGA.GM4
 DItemRevisionGUID=
 
 [GeneratedDocument13]
-DocumentPath=Gerbers\FPGA.GTO
+DocumentPath=Gerbers\FPGA.GTL
 DItemRevisionGUID=
 
 [GeneratedDocument14]
-DocumentPath=Gerbers\FPGA.GTS
+DocumentPath=Gerbers\FPGA.GTO
 DItemRevisionGUID=
 
 [GeneratedDocument15]
-DocumentPath=Gerbers\FPGA.LDP
+DocumentPath=Gerbers\FPGA.GTS
 DItemRevisionGUID=
 
 [GeneratedDocument16]
-DocumentPath=Gerbers\FPGA.REP
+DocumentPath=Gerbers\FPGA.LDP
 DItemRevisionGUID=
 
 [GeneratedDocument17]
+DocumentPath=Gerbers\FPGA.REP
+DItemRevisionGUID=
+
+[GeneratedDocument18]
 DocumentPath=Gerbers\FPGA.RUL
 DItemRevisionGUID=
 
@@ -657,20 +661,18 @@ OutputDefault1=0
 PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4
 Configuration1_Name1=ColumnNameFormat
 Configuration1_Item1=CaptionAsName
-Configuration1_Name2=Filter
-Configuration1_Item2=545046300E5446696C74657257726170706572000D46696C7465722E416374697665090F46696C7465722E43726974657269610A04000000000000000000
-Configuration1_Name3=ForceUpdateSettings
-Configuration1_Item3=False
-Configuration1_Name4=General
-Configuration1_Item4=OpenExported=False|AddToProject=True|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePCBData=False|IncludeVaultData=False|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|BatchMode=5|FormWidth=1271|FormHeight=661|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
-Configuration1_Name5=GroupOrder
-Configuration1_Item5=Footprint=True
-Configuration1_Name6=PCBDocument
-Configuration1_Item6=FileName=FPGA.PcbDoc
-Configuration1_Name7=SortOrder
-Configuration1_Item7=Designator=Up|Comment=Up|Footprint=Up
-Configuration1_Name8=VisibleOrder
-Configuration1_Item8=Description=86|Quantity=74|Manufacturer 1=97|Manufacturer Part Number 1=118|Supplier Part Number 1=108|Supplier Unit Price 1=92|Footprint=52
+Configuration1_Name2=ForceUpdateSettings
+Configuration1_Item2=False
+Configuration1_Name3=General
+Configuration1_Item3=OpenExported=False|AddToProject=True|ReportBOMViolationsInMessages=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePcbData=False|IncludeVaultData=False|IncludeCloudData=False|IncludeDocumentData=True|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|TemplateVaultGuid=|TemplateItemGuid=|TemplateRevisionGuid=|BatchMode=6|FormWidth=1271|FormHeight=661|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>|SolutionsPerItem=1|SuppliersPerSolution=1|ViewType=1|BomSetName=
+Configuration1_Name4=GroupOrder
+Configuration1_Item4=Footprint=True
+Configuration1_Name5=PCBDocument
+Configuration1_Item5=FileName=FPGA.PcbDoc
+Configuration1_Name6=SortOrder
+Configuration1_Item6=Footprint=Up
+Configuration1_Name7=VisibleOrder
+Configuration1_Item7=Description=86|Quantity=74|Manufacturer 1=97|Manufacturer Part Number 1=118|Supplier Part Number 1=108|Supplier Unit Price 1=92|Footprint=52
 OutputType2=ComponentCrossReference
 OutputName2=Component Cross Reference Report
 OutputDocumentPath2=
