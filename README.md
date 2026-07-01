@@ -49,3 +49,20 @@ Each testbench is self-checking and prints `PASS` lines to the console.
 
 `src/` holds the 8 design files; `sim/` holds the 7 testbenches.
 `Control_Unit_V2.vhd` is a two-process alternative kept for reference only — **do not add it to the build** (duplicate entity with `Control_Unit.vhd`).
+
+# PCB Design
+
+Used Altium Designer for the schematics and the final PCB product. The iCE40-UP5K package was used for simplicity purposes. For the development board, the components used can be found in the BOM, including an oscillator, a JTAG programming header, 2x power regulators for 3.3V and 1.2V, 4x 7-segment displays for bit display and a driver for synchronous use. For user interface: 2x buttons for reset and set and a 4-position DIP switch for switching various modes defined in the VHDL. The FPGA itself is powered through both the 3.3V and 1.2V, while the 3.3V is driven to the rest of the board through the 3V3-Plane layer. 
+
+## Layers
+
+There are only 4 layers in total for this design: 
+
+1. Top Layer
+2. GND Plane
+3. 3V3 Plane
+4. Bottom Layer
+
+for the sake of simplicity. A seperate layer for the 7-segment driver was considered but in the end the idea to drop 4 displays was adopted, resulting in a smaller form-factor and easier tracing.
+
+
