@@ -1,16 +1,11 @@
--- =============================================================================
---  File        : Program_Counter.vhd
---  Entity      : Program_Counter
---  Project     : 8-bit CPU  (Digital Technology, SS 2026)
 --  Description : 4-bit register/counter that stores the address of the current
 --                instruction. It can either increment to the next instruction
 --                or load a new address during a jump instruction.
---
+
 --  Notes       : This is sequential logic.
 --                Reset is asynchronous.
 --                Normal counting/loading is synchronous and controlled by
 --                Clock_Enable.
--- =============================================================================
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -38,16 +33,10 @@ architecture RTL of Program_Counter is
 
 begin
 
-    -- -------------------------------------------------------------------------
-    -- Counter process
-    --
-    -- Reset is asynchronous because it is checked before the clock edge.
-    -- Incrementing and loading happen only on rising_edge(Clock).
-    --
-    -- Load_Enable has priority over Increment. This is important for jumps:
-    -- when a jump instruction is executed, the PC should load the jump address
-    -- instead of simply going to the next instruction.
-    -- -------------------------------------------------------------------------
+-- Reset is asynchronous because it is checked before the clock edge.
+-- Incrementing and loading happen only on rising_edge(Clock).
+-- Load_Enable has priority over Increment.
+    
     counter_process : process(Clock, Reset)
     begin
         if Reset = '1' then
