@@ -1,14 +1,8 @@
--- =============================================================================
---  File        : Memory_Unit.vhd
---  Entity      : Memory_Unit
---  Project     : 8-bit CPU  (Digital Technology, SS 2026)
 --  Description : Program ROM and data RAM for the 8-bit CPU.
---
 --                Program ROM:
 --                  - stores four small demo programs
 --                  - selected using Program_Select
 --                  - addressed by the 4-bit Program Counter
---
 --                Data RAM:
 --                  - 16 addresses, each storing 8-bit data
 --                  - asynchronous read
@@ -17,7 +11,6 @@
 --  Notes       : The ROM part is combinational logic.
 --                The RAM write part is sequential logic.
 --                Reset is asynchronous and restores the initial RAM values.
--- =============================================================================
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -52,19 +45,16 @@ architecture RTL of Memory_Unit is
     type RAM_Array_Type is array (0 to 15) of std_logic_vector(7 downto 0);
 
     -- Initial RAM contents.
-    -- These values are used by the demo programs.
     signal RAM : RAM_Array_Type := (
         0      => x"02",   -- RAM[0] = 02
         1      => x"01",   -- RAM[1] = 01
-        2      => x"00",   -- RAM[2] = 00, used for store demo
-        3      => x"0F",   -- RAM[3] = 0F, used for logic demo
+        2      => x"00",   -- RAM[2] = 00,
+        3      => x"0F",   -- RAM[3] = 0F,
         others => x"00"
     );
 
-    -- -------------------------------------------------------------------------
     -- Program 0: arithmetic + memory + output.
     -- Final output = 04.
-    -- -------------------------------------------------------------------------
     constant Program_0 : ROM_Array_Type := (
         0      => OP_LOAD_IMMEDIATE & "0011", -- ACC = 03
         1      => OP_STORE_MEMORY   & "0010", -- RAM[2] = ACC = 03
@@ -78,14 +68,10 @@ architecture RTL of Memory_Unit is
         others => OP_NOP            & "0000"
     );
 
-    -- -------------------------------------------------------------------------
     -- Program 1: 8-bit datapath demonstration.
     -- Final output = 10.
-    --
-    -- This proves the CPU is really using an 8-bit datapath:
     --   4-bit result: F + 1 = 0 with carry
     --   8-bit result: 0F + 01 = 10
-    -- -------------------------------------------------------------------------
     constant Program_1 : ROM_Array_Type := (
         0      => OP_LOAD_IMMEDIATE & "1111", -- ACC = 0F
         1      => OP_ADD_MEMORY     & "0001", -- ACC = ACC + RAM[1] = 0F + 01 = 10
@@ -94,10 +80,8 @@ architecture RTL of Memory_Unit is
         others => OP_NOP            & "0000"
     );
 
-    -- -------------------------------------------------------------------------
     -- Program 2: logic operations.
     -- Final output = 0F.
-    -- -------------------------------------------------------------------------
     constant Program_2 : ROM_Array_Type := (
         0      => OP_LOAD_IMMEDIATE & "1010", -- ACC = 0A
         1      => OP_XOR_MEMORY     & "0011", -- ACC = 0A XOR RAM[3] = 0A XOR 0F = 05
@@ -108,10 +92,8 @@ architecture RTL of Memory_Unit is
         others => OP_NOP            & "0000"
     );
 
-    -- -------------------------------------------------------------------------
     -- Program 3: conditional jump using zero flag.
     -- Final output = 07.
-    -- -------------------------------------------------------------------------
     constant Program_3 : ROM_Array_Type := (
         0      => OP_LOAD_IMMEDIATE & "0001", -- ACC = 01
         1      => OP_SUB_MEMORY     & "0001", -- ACC = 01 - RAM[1] = 01 - 01 = 00, zero flag = 1
@@ -126,13 +108,8 @@ architecture RTL of Memory_Unit is
 
 begin
 
-    -- -------------------------------------------------------------------------
-    -- Program ROM read logic
-    --
-    -- This is combinational logic.
-    -- The selected instruction depends only on Program_Select and
-    -- Instruction_Address.
-    -- -------------------------------------------------------------------------
+    -- ROM read logic is combinational.
+    -- The selected instruction depends only on Program_Select and Instruction_Address.
     rom_read_logic : process(Program_Select, Instruction_Address)
         variable Address_Integer : integer range 0 to 15;
     begin
@@ -156,12 +133,9 @@ begin
     end process rom_read_logic;
 
 
-    -- -------------------------------------------------------------------------
     -- RAM write logic
-    --
     -- Reset is asynchronous because it is checked before the clock edge.
     -- RAM writes are synchronous because they happen only on rising_edge(Clock).
-    -- -------------------------------------------------------------------------
     ram_write_logic : process(Clock, Reset)
     begin
         if Reset = '1' then
@@ -183,13 +157,9 @@ begin
     end process ram_write_logic;
 
 
-    -- -------------------------------------------------------------------------
     -- RAM read logic
-    --
     -- This is an asynchronous read.
-    -- Whenever RAM_Address changes, RAM_Data_Out changes to the value stored
-    -- at that address.
-    -- -------------------------------------------------------------------------
+    -- Whenever RAM_Address changes, RAM_Data_Out changes to the value stored at that address.
     RAM_Data_Out <= RAM(to_integer(unsigned(RAM_Address)));
 
 end architecture RTL;
